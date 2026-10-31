@@ -1,0 +1,20 @@
+{
+  "name": "itchbot",
+  "module": "src/index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "bun src/index.ts",
+    "dev": "bun --watch src/index.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "discord.js": "^14.28.0"
+  }
+}
