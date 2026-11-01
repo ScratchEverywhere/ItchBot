@@ -71,7 +71,9 @@ const announce = async (client: Client, release: ReleaseEvent["release"]) => {
     throw new Error("UPDATES_CHANNEL_ID isn't a channel the bot can send to");
   }
 
-  const header = `# ${
+  const { updatesRoleId } = config;
+  const ping = updatesRoleId ? `<@&${updatesRoleId}>\n` : "";
+  const header = `${ping}# ${
     release.name || release.tag_name
   }\n<${release.html_url}>\n\n`;
   const text = header + (release.body?.trim() || "No release notes.");
@@ -80,7 +82,10 @@ const announce = async (client: Client, release: ReleaseEvent["release"]) => {
     await channel.send({
       content,
       flags: MessageFlags.SuppressEmbeds,
-      allowedMentions: { parse: [] },
+      allowedMentions: {
+        parse: [],
+        roles: updatesRoleId ? [updatesRoleId] : [],
+      },
     });
   }
 };
