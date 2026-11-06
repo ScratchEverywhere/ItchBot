@@ -15,6 +15,8 @@ const client = new Client({
     GatewayIntentBits.GuildMessages,
     GatewayIntentBits.MessageContent,
   ],
+  // Never ping anyone from bot output; user input can end up in replies.
+  allowedMentions: { parse: [], repliedUser: false },
 });
 
 registerMessageHandler(client, registry);
