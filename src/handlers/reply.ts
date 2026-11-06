@@ -4,8 +4,11 @@ import { config } from "../config.ts";
 
 export const toMessage = (reply: Reply) => {
   const { files } = reply;
-  if ("content" in reply) return { content: reply.content, files };
-  return { embeds: [toEmbed(reply)], files };
+  const allowedMentions = { parse: [] };
+  if ("content" in reply) {
+    return { content: reply.content, files, allowedMentions };
+  }
+  return { embeds: [toEmbed(reply)], files, allowedMentions };
 };
 
 const toEmbed = (reply: Exclude<Reply, { content: string }>): EmbedBuilder => {
