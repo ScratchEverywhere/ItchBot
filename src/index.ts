@@ -6,6 +6,7 @@ import { registerInteractionHandler } from "./handlers/interaction.ts";
 import { registerMessageHandler } from "./handlers/message.ts";
 import { loadCommands, toSlashPayloads } from "./registry.ts";
 import { startReleaseWebhook } from "./releases.ts";
+import { warmScratchBox } from "./scratchbox.ts";
 
 const registry = await loadCommands();
 
@@ -31,6 +32,7 @@ client.once(Events.ClientReady, async (ready) => {
   }
   void warmItems();
   void warmDocs();
+  void warmScratchBox();
   startReleaseWebhook(ready);
   console.log(
     `Online as ${ready.user.tag} with ${registry.size} commands: ${

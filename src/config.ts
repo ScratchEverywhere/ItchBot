@@ -22,4 +22,5 @@ export const config = {
   docsBranch: "release",
   logoUrl: "https://github.com/ScratchEverywhere/ScratchEverywhere/blob/main/gfx/logo_se.png?raw=true",
   docsUrl: "https://scratcheverywhere.github.io",
+  scratchboxUrl: "https://scratchbox.dev",
 } as const;
